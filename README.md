@@ -1,6 +1,8 @@
 # React + ThreeJS + DatGUI
 
-## Available Scripts
+### Move the mouse over the text box, the text wil be rotated. There is a GUI below, from there anyone can change font color, font size, font family, etc.
+
+## Installation
 
 In the project directory, you can run:
 
