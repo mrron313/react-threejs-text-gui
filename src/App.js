@@ -7,7 +7,7 @@ import "react-dat-gui/dist/index.css";
 import './App.css';
 
 extend({ Text });
-const text = "There are many variations of passages of Lorem Ipsum available.";
+const text = "There are many variations of passages of Lorem Ipsum available. - ARIF";
 
 export default function App() {
   const [rotation, setRotation] = React.useState([0, 0, 0]);
@@ -30,30 +30,32 @@ export default function App() {
   };
 
   return (
-    <div 
-      onMouseMove={onMouseMove}
-      className="App">
-      <Canvas
-        camera={{ fov: 75, position: [0, 0, 7] }}
-        pixelRatio={window.devicePixelRatio}
-      >
-        <text
-          position-z={-180}
-          rotation={rotation}
-          {...opts}
-          text={text}
-          anchorX="center"
-          anchorY="middle"
+    <>
+      <div 
+        onMouseMove={onMouseMove}
+        className="App">
+        <Canvas
+          camera={{ fov: 75, position: [0, 0, 7] }}
+          pixelRatio={window.devicePixelRatio}
         >
-          {opts.materialType === "MeshPhongMaterial" ? (
-            <meshPhongMaterial attach="material" color={opts.color} />
-          ) : null}
-        </text>
+          <text
+            position-z={-180}
+            rotation={rotation}
+            {...opts}
+            text={text}
+            anchorX="center"
+            anchorY="middle"
+          >
+            {opts.materialType === "MeshPhongMaterial" ? (
+              <meshPhongMaterial attach="material" color={opts.color} />
+            ) : null}
+          </text>
 
-        <pointLight position={[-100, 0, -160]} />
-      </Canvas>
+          <pointLight position={[-100, 0, -160]} />
+        </Canvas>
+      </div>
 
-      <DatGui data={opts} onUpdate={setOpts}>
+      <DatGui style={{ position: 'inherit', margin: 'auto'}} data={opts} onUpdate={setOpts}>
         <DatNumber path="fontSize" min={1} max={50} step={1} />
         <DatNumber path="maxWidth" min={50} max={500} step={1} />
         <DatNumber path="lineHeight" min={0.5} max={2} step={0.1} />
@@ -69,6 +71,7 @@ export default function App() {
         />
         <DatColor path="color" />
       </DatGui>
-    </div>
+    </>
+
   )
 }
